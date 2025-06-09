@@ -1,9 +1,11 @@
 import "./App.css";
+
 function App() {
-  //year tracker logic
-  const startOfYear = new Date(new Date().getFullYear(), 0, 1); //calls current year setting date to current year, month 0 (January), and day 1
-  const endOfYear = new Date(new Date().getFullYear(), 11, 31); //calls current year setting date to current year, month 11 (December), and day 31
-  const now = new Date(); //gets current date
+  // year tracker logic
+  const now = new Date(); // gets current date
+  const currentYear = now.getFullYear();
+  const startOfYear = new Date(currentYear, 0, 1); // Jan 1st of the current year
+  const endOfYear = new Date(currentYear + 1, 0, 1); // Jan 1st of the next year
 
   const total = endOfYear - startOfYear;
   const elapsed = now - startOfYear;
@@ -21,7 +23,7 @@ function App() {
       <main className="grid grid-cols-2 gap-6 w-full max-w-screen-xl mx-auto px-4">
         <section className="bg-gray-800 shadow-md rounded-xl p-6 font-mono hover:bg-slate-700 transition-colors">
           <h2 className="text-lg font-semibold tracking-wide mb-2">Current Year Progress</h2>
-          <p className="text-sm">2025 is <span className="text-blue-400">{percent}%</span> complete</p>
+          <p className="text-sm">{currentYear} is <span className="text-blue-400">{percent}%</span> complete</p>
           <div className="w-full h-2 bg-gray-700 rounded mt-4">
           <div
             className="h-full bg-cyan-500 rounded"
